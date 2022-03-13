@@ -10,4 +10,12 @@ class FlutterXimalaya {
     final String? version = await _channel.invokeMethod('getPlatformVersion');
     return version;
   }
+
+  static Future<void> init() async {
+    return await _channel.invokeMethod('init');
+  }
+
+  static Future<void> goInSdk() async {
+    return await _channel.invokeMethod('goInSdk');
+  }
 }

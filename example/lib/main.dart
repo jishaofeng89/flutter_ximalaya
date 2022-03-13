@@ -18,10 +18,16 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String _platformVersion = 'Unknown';
 
+  void initXimalaya() async {
+    await FlutterXimalaya.init();
+  }
+
   @override
   void initState() {
     super.initState();
     initPlatformState();
+
+    initXimalaya();
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
@@ -54,7 +60,14 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          // child: Text('Running on: $_platformVersion\n'),
+          child: TextButton(
+            child: const Text('点击跳转到ui-sdk'),
+            onPressed: () async {
+              // await FlutterXimalaya.init();
+              await FlutterXimalaya.goInSdk();
+            },
+          ),
         ),
       ),
     );
